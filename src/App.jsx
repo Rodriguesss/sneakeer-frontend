@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import { GlobalStyle } from './css'
 
-import Hello from './components/pages/Hello'
+import Modal from "./components/Modal"
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hello />} />
+          <Route path="/modal" element={<Modal />} />
         </Routes>
       </BrowserRouter>
     </>
