@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import services from '../../../services/services'
 import { Title, Form, Input } from "../style"
 
-export default function Register(event, subtitle) {
+export default function Register() {
 	const { register, handleSubmit } = useForm()
 
 	async function singUp(data) {
@@ -12,13 +12,13 @@ export default function Register(event, subtitle) {
 
 			toast.success('Usuário cadastrado com sucesso!')
 		} catch {
-			toast.error('Erro ao cadastrar usuário')
+			toast.error('Não foi possivel cadastrar sua conta, revise os dados preenchidos.')
 		}
 	}
 
 	return (
 		<>
-			<Title ref={(_subtitle) => (subtitle = _subtitle)}>Registrar</Title>
+			<Title>Cadastrar</Title>
 			<Form onSubmit={handleSubmit(data => singUp(data))}>
 				<Input {...register("first_name")} type="text" minLength="2" maxLength="20" placeholder="Nome" />
 				<Input {...register("last_name")} type="text" minLength="2" maxLength="40" placeholder="Sobrenome" />
@@ -26,7 +26,7 @@ export default function Register(event, subtitle) {
 				<Input {...register("password")} type="password" minLength="3" maxLength="15" placeholder="Senha" />
 				<Input {...register("password_confirmation")} type="password" minLength="3" maxLength="15" placeholder="Confirme a senha" />
 
-				<Input type="submit" value="Cadastrar" button={true} />
+				<Input type="submit" value="Registrar" button={true} />
 			</Form>
 		</>
 	)

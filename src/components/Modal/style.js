@@ -24,8 +24,17 @@ const Link = styled.div`
 	}
 `
 
+const LinkToogle = styled.b`
+	font-weight: 500;
+
+	:hover {
+		text-decoration: underline;
+	}
+`
+
 export {
 	TitleHeader,
 	Link,
-	Button
+	Button,
+	LinkToogle
 }

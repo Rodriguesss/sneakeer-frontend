@@ -3,7 +3,7 @@ import { toast } from 'react-toastify'
 import services from "../../../services/services"
 import { Title, Form, Input } from "../style"
 
-export default function Login(subtitle) {
+export default function Login() {
 	const { register, handleSubmit } = useForm()
 	
 	async function singIn(data) {
@@ -14,13 +14,13 @@ export default function Login(subtitle) {
 
 			toast.success('Logado com sucesso!')
 		} catch {
-			toast.error('Erro ao fazer login')
+			toast.error('Usuário ou senha inválidos.')
 		}
 	}
 
 	return (
 		<>
-			<Title ref={(_subtitle) => (subtitle = _subtitle)}>Entrar</Title>
+			<Title>Entrar</Title>
 			<Form onSubmit={handleSubmit((data) => singIn(data))}>
 				<Input {...register("email")} type="text" placeholder="Email" />
 				<Input {...register("password")} type="password" placeholder="Senha" />

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Modal from 'react-modal'
 
-import { TitleHeader, Button, Link } from "./style"
+import { TitleHeader, Button, Link, LinkToogle } from "./style"
 import Login from "../Form/Login"
 import Register from "../Form/Register"
 
@@ -19,16 +19,11 @@ const modalStyle = {
 Modal.setAppElement('#root');
 
 export default function ModalComponent() {
-  let subtitle
   const [isLogin, setIsLogin] = useState(true)
   const [modalIsOpen, setIsOpen] = useState(false)
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = '#f00';
   }
 
   function closeModal() {
@@ -40,7 +35,6 @@ export default function ModalComponent() {
       <button onClick={openModal}>Entrar/Cadastrar</button>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={modalStyle}
         contentLabel="Modal"
@@ -51,14 +45,14 @@ export default function ModalComponent() {
         </TitleHeader>
 
         {isLogin
-          ? <Login subtitle={subtitle} />
+          ? <Login />
           : <Register />}
 
         <Link>
-          {isLogin ? `Não tem cadastro` : `Já possui cadastro?`}
-          <b onClick={() => { setIsLogin(!isLogin) }}>
-            &nbsp;{isLogin ? `Cadastre-se` : `Entrar`}
-          </b>
+          {isLogin ? `Não tem cadastro?` : `Já possui cadastro?`}&nbsp;
+          <LinkToogle onClick={() => { setIsLogin(!isLogin) }}>
+            {isLogin ? `Cadastre-se` : `Entrar`}
+          </LinkToogle>
         </Link>
       </Modal>
     </div>
