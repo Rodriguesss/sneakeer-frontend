@@ -26,7 +26,7 @@ export default function Register() {
 				<Input {...register("password")} type="password" minLength="3" maxLength="15" placeholder="Senha" />
 				<Input {...register("password_confirmation")} type="password" minLength="3" maxLength="15" placeholder="Confirme a senha" />
 
-				<Input type="submit" value="Registrar" button={true} />
+				<Input type="submit" value="REGISTRAR" button={true} />
 			</Form>
 		</>
 	)

@@ -25,7 +25,7 @@ export default function Login() {
 				<Input {...register("email")} type="text" placeholder="Email" />
 				<Input {...register("password")} type="password" placeholder="Senha" />
 
-				<Input type="submit" value="Entrar" button={true} />
+				<Input type="submit" value="ENTRAR" button={true} />
 			</Form>
 		</>
 	)

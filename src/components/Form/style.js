@@ -18,7 +18,11 @@ const Input = styled.input`
 	-moz-transition: all .1s linear;
 	-webkit-appearance:none;
 
-	${({button}) => button && `cursor: pointer;`}
+	${({button}) => button && `
+	font-size: 14px;
+
+	cursor: pointer;
+	`}
 
 	:focus {
 		border: 2px solid #3951b2;
