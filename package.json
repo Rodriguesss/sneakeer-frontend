@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "cross-env": "^7.0.3",
     "dotenv": "^16.0.0",
     "open": "^8.4.0",
     "react": "^17.0.2",
