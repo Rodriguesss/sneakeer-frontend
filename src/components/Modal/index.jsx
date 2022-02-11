@@ -1,5 +1,9 @@
+import { useState } from 'react'
 import Modal from 'react-modal'
-import { useState } from 'react';
+
+import { TitleHeader, Button, Link } from "./style"
+import Login from "../Form/Login"
+import Register from "../Form/Register"
 
 const modalStyle = {
   content: {
@@ -12,9 +16,12 @@ const modalStyle = {
   }
 }
 
+Modal.setAppElement('#root');
+
 export default function ModalComponent() {
-	let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
+  let subtitle
+  const [isLogin, setIsLogin] = useState(true)
+  const [modalIsOpen, setIsOpen] = useState(false)
 
   function openModal() {
     setIsOpen(true);
@@ -30,24 +37,29 @@ export default function ModalComponent() {
 
   return (
     <div>
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal}>Entrar/Cadastrar</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={modalStyle}
-        contentLabel="Example Modal"
+        contentLabel="Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+
+        <TitleHeader>
+          <Button onClick={closeModal}>X</Button>
+        </TitleHeader>
+
+        {isLogin
+          ? <Login subtitle={subtitle} />
+          : <Register />}
+
+        <Link>
+          {isLogin ? `Não tem cadastro` : `Já possui cadastro?`}
+          <b onClick={() => { setIsLogin(!isLogin) }}>
+            &nbsp;{isLogin ? `Cadastre-se` : `Entrar`}
+          </b>
+        </Link>
       </Modal>
     </div>
   )
