@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import AuthProvider from "./contexts/authContext";
 import { ToastContainer } from "react-toastify";
-
 import { GlobalStyle } from './css'
-
-import Modal from "./components/Modal"
 import { ResetStyle } from "./css/reset";
+import Home from './pages/Home'
+import Modal from "./components/Modal"
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -13,11 +13,14 @@ function App() {
       <ResetStyle />
       <GlobalStyle />
       <ToastContainer />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/modal" element={<Modal />} />
-        </Routes>
-      </BrowserRouter>
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/modal" element={<Modal />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </>
   )
 }
