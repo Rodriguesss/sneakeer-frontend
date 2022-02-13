@@ -1,23 +1,32 @@
+import { useNavigate, useLocation } from 'react-router-dom';
 import { createContext, useState } from "react"
+import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext()
 
 export function AuthProvider({ children }) {
-    const persistedToken = JSON.parse(localStorage.getItem("token"))
-    const [token, setToken] = useState(persistedToken)
+    const navigate = useNavigate()
+    const location = useLocation()  
+    const [user, setUser] = useLocalStorage('user', null)
+    const [token, setToken] = useLocalStorage('token', null)
 
-    function login(token) {
+    useEffect(() => {
+        location.pathname === '/' && navigate('/home')
+    }, [])
+    
+
+    function login({token, user}) {
         setToken(token)
-        localStorage.setItem("token", JSON.stringify(token))
+        setUser(user)
     }
 
     function logout() {
-        setToken("")
-        localStorage.removeItem("token")
+        setUser(null)
+        setToken(null)
     }
 
     return (
-        <AuthContext.Provider value={{ login, logout, token }}>
+        <AuthContext.Provider value={{ login, logout, token, user, setUser }}>
             {children}
         </AuthContext.Provider>
     )

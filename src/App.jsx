@@ -1,28 +1,28 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-
-import { ToastContainer } from "react-toastify"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { ToastContainer } from "react-toastify";
 import { GlobalStyle } from './css'
-import { ResetStyle } from "./css/reset"
-
-import { AuthProvider } from "./context/AuthContext"
-
+import { ResetStyle } from "./css/reset";
+import { AuthProvider } from "./contexts/AuthContext";
+import Home from './pages/Home'
 import Modal from "./components/Modal"
 import AccountManagement from "./pages/AccountManagement"
 
 function App() {
   return (
-    <AuthProvider>
+    <>
       <ResetStyle />
       <GlobalStyle />
       <ToastContainer />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/modal" element={<Modal />} />
-          <Route path="/account-management" element={<AccountManagement />} />
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/modal" element={<Modal />} />
+            <Route path="/account-management" element={<AccountManagement />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
+    </>
   )
 }
 
