@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom';
-import { createContext, useState } from "react"
+import { createContext } from "react"
 import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext()
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={{ login, logout, token, user, setUser }}>
+        <AuthContext.Provider value={{ login, logout, token, user }}>
             {children}
         </AuthContext.Provider>
     )
