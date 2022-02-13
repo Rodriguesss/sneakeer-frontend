@@ -1,16 +1,18 @@
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify'
+import useAuth from "../../../hooks/useAuth"
 import services from "../../../services/services"
 import { Title, Form, Input } from "../style"
 
 export default function Login() {
+	const { login } = useAuth()
 	const { register, handleSubmit } = useForm()
-	
+
 	async function singIn(data) {
 		try {
 			const promise = await services.login(data)
 
-			console.log(promise)
+			login(promise.data.token)
 
 			toast.success('Logado com sucesso!')
 		} catch {
