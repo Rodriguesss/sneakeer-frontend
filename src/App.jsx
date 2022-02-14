@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import AuthProvider from "./contexts/authContext";
 import { ToastContainer } from "react-toastify";
 import { GlobalStyle } from './css'
 import { ResetStyle } from "./css/reset";
+import { AuthProvider } from "./context/AuthContext";
 import Home from './pages/Home'
 import Modal from "./components/Modal"
-import Header from "./components/Header";
+import AccountManagement from "./pages/AccountManagement"
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/modal" element={<Modal />} />
+            <Route path="/account_management" element={<AccountManagement />} />
           </Routes>
         </AuthProvider>
       </Router>

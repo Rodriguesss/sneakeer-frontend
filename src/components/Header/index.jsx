@@ -1,6 +1,5 @@
-import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../contexts/authContext';
+import useAuth from "../../hooks/useAuth"
 import { 
   StyledHeader, UpperBar, Logo,
   SearchInput, LoginButton,
@@ -12,7 +11,7 @@ import logo from '../../assets/images/logo.png'
 
 
 export default function Header() {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   return (
