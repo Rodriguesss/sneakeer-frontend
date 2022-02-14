@@ -5,12 +5,15 @@ import { Title, Form, Input } from "../style"
 
 export default function Register() {
 	const { register, handleSubmit } = useForm()
+	const { setIsLogin } = useAuth()
 
 	async function singUp(data) {
 		try {
 			await services.register(data)
 
 			toast.success('Usuário cadastrado com sucesso!')
+
+			setIsLogin(true)
 		} catch {
 			toast.error('Não foi possivel cadastrar sua conta, revise os dados preenchidos.')
 		}

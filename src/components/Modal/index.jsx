@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import Modal from 'react-modal'
 
 import { TitleHeader, Button, Link, LinkToogle } from "./style"
 import Login from "../Form/Login"
 import Register from "../Form/Register"
+import useAuth from '../../hooks/useAuth'
 
 const modalStyle = {
   content: {
@@ -13,26 +13,16 @@ const modalStyle = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
-  }
+  }, overlay: {zIndex: 1000} 
 }
 
 Modal.setAppElement('#root');
 
 export default function ModalComponent() {
-  const [isLogin, setIsLogin] = useState(true)
-  const [modalIsOpen, setIsOpen] = useState(false)
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const { isLogin, setIsLogin, modalIsOpen, closeModal } = useAuth();
 
   return (
     <div>
-      <button onClick={openModal}>Entrar/Cadastrar</button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}

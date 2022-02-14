@@ -5,8 +5,9 @@ import services from "../../../services/services"
 import { Title, Form, Input } from "../style"
 
 export default function Login() {
-	const { login } = useAuth()
+	const { login, closeModal } = useAuth()
 	const { register, handleSubmit } = useForm()
+
 
 	async function singIn(data) {
 		try {
@@ -15,6 +16,8 @@ export default function Login() {
 			login(promise.data.token, promise.data.user)
 
 			toast.success('Logado com sucesso!')
+
+			closeModal();
 		} catch {
 			toast.error('Usuário ou senha inválidos.')
 		}

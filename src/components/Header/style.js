@@ -38,6 +38,7 @@ const Categories = styled.div`
 const Logo = styled.img`
   width: 95px;
   height: 100%;
+  cursor: pointer;
 `
 
 const SearchInput = styled.input`
@@ -45,6 +46,9 @@ const SearchInput = styled.input`
 
   width: 250px;
   height: 30px;
+
+  font-size: 18px;
+  font-weight: 500;
   color: #fff;
 
   &::placeholder{
@@ -114,8 +118,11 @@ const CartCount = styled.div`
 `
 
 const StyledLink = styled(Link)`
+  font-size: 18px;
+  font-weight: 500;
   text-decoration: none;
-  color: #fff;
+  color: #FFF;
+  margin-right: 10px;
 `
 
 const Left = styled.div`
@@ -124,7 +131,8 @@ const Left = styled.div`
   align-items: center;
 
   & >ion-icon {
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: 500;
     color: #fff;
     margin-right: 5px;
   }
@@ -134,6 +142,11 @@ const Right = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+
+  span {
+    font-size: 18px;
+    font-weight: 500;
+  }
 `
 
 export {
