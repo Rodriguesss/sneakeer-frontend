@@ -8,14 +8,6 @@ const Container = styled.div`
   padding: 40px 0;
 `
 
-const Filters = styled.div`
-  width: 30%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* background-color: lightblue; */
-`
-
 const Vertical = styled.div`
   width: 1px;
   height: 100vh;
@@ -23,16 +15,14 @@ const Vertical = styled.div`
 `
 
 const ProductGrid = styled.div`
-  width: 70%;
+  width: 900px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  /* background-color: lightgray; */
 `
 
 export {
   Container,
-  Filters,
   Vertical,
   ProductGrid,
 }
