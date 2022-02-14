@@ -3,9 +3,15 @@ import {
   Title, Wrap, Input,
   Select, Label, SubmitButton } from './style';
 import { useForm } from "react-hook-form";
+import useAuth from '../../hooks/useAuth';
 
 export default function FilterBar() {
   const { register, handleSubmit } = useForm();
+  const { setFilters } = useAuth();
+
+  function handleFilters(data) {
+    setFilters(data);
+  }
 
   return (
     <Filters>
@@ -13,7 +19,7 @@ export default function FilterBar() {
 
       <Horizontal />
 
-      <FilterForm onSubmit={handleSubmit()}>
+      <FilterForm onSubmit={handleSubmit((data)=>handleFilters(data))}>
         <Title>Modelo</Title>
         <Wrap>
           <Input  type="checkbox" {...register('canoalto')} />
