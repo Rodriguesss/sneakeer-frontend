@@ -20,7 +20,7 @@ const BannerText = styled.div`
   & >h2 {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
+    color: #FF5F1F;
     margin-bottom: 30px;
   }
 
@@ -33,9 +33,7 @@ const BannerText = styled.div`
 const Hover = styled.div`
   width: 100%;
   height: 100%;
-  /* background: linear-gradient(180deg, rgba(64,64,64,1) 0%, rgba(115,115,115,1) 50%, rgba(217,217,217,1) 100%); */
-  background: linear-gradient(180deg, rgba(115,115,115,1) 0%, rgba(217,217,217,1) 100%);
-  opacity: 0.6;
+  background: linear-gradient(180deg, rgba(115,115,115,0.6) 0%, rgba(217,217,217,0.6) 100%);
 
   padding: 160px 100px 100px 100px;
 

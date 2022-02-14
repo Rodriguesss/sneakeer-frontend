@@ -14,15 +14,7 @@ const Vertical = styled.div`
   background-color: #f2f2f2;
 `
 
-const ProductGrid = styled.div`
-  width: 900px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-`
-
 export {
   Container,
   Vertical,
-  ProductGrid,
 }
