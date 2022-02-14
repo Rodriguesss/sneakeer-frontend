@@ -7,15 +7,15 @@ const Form = styled.form`
 `
 
 const Input = styled.input`
-  border: 3px solid #e6d5c1;
+  	border: 3px solid #e6d5c1;
 	outline: none;
 	min-width: 250px;
 	padding: 15px 20px;
 	font-size: 17px;
 	color: #000;
 	font-weight: bold;
-  background-color: #fff4e3;
-  transition: all .1s linear;
+  	background-color: #fff4e3;
+  	transition: all .1s linear;
 	-webkit-transition: all .1s linear;
 	-moz-transition: all .1s linear;
 	-webkit-appearance:none;
@@ -51,6 +51,15 @@ const Input = styled.input`
 			background-color: #E23030;
 		}
 	`}
+
+	${({ cvv }) => cvv && `
+	min-width: 100px;
+	width: 100px;` }}
+`
+
+const CreditCardContainerCvvInput = styled.div`
+	display: flex;
+	gap: 20px;
 `
 
 const ButtonPosition = styled.div`
@@ -58,8 +67,39 @@ const ButtonPosition = styled.div`
 	justify-content: flex-end;
 `
 
+const Select = styled.select`
+	border: 3px solid #e6d5c1;
+	outline: none;
+	min-width: 250px;
+	padding: 15px 20px;
+	font-size: 17px;
+	color: #000;
+	font-weight: bold;
+	background-color: #fff4e3;
+	transition: all .1s linear;
+	-webkit-transition: all .1s linear;
+	-moz-transition: all .1s linear;
+	-webkit-appearance:none;
+
+	::placeholder {
+			font-size: 17px;
+	font-weight: bold;
+	}
+
+	:focus {
+		border: 3px solid #757575;
+		border-radius: 5px;
+	}
+
+	${({ brand }) => brand && `
+	min-width: 130px;
+	width: 100%;` }}
+`
+
 export {
 	Form,
 	Input,
-	ButtonPosition
+	Select,
+	ButtonPosition,
+	CreditCardContainerCvvInput
 }

@@ -39,12 +39,20 @@ async function changePersonalData(body, token) {
   return userPromise
 }
 
+async function addCreditCard(body, token) {
+  const headers = createHeader(token)
+  const creditCardPromise = await axios.post(`${API_URL}/credit_card`, body, headers)
+
+  return creditCardPromise
+}
+
 const services = {
   login,
   register,
   changeEmail,
   changePassword,
-  changePersonalData
+  changePersonalData,
+  addCreditCard
 }
 
 export default services
