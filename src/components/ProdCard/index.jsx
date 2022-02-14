@@ -4,8 +4,7 @@ import services from '../../services/services';
 import { Card } from './style';
 
 export default function ProdCard() {
-  const [highlight, setHighlight] = useState()
-  const { addToCart } = useAuth();
+  const { highlight, setHighlight, addToCart } = useAuth();
   const LIMIT = 5;
 
   useEffect(() => {
