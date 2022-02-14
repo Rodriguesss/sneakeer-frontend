@@ -53,6 +53,26 @@ async function addAddress(body, token) {
   return creditCardPromise
 }
 
+async function getProducts(body) {
+  const getProductsPromise = await axios.get(`${API_URL}/products`, body)
+
+  return getProductsPromise
+}
+
+async function getUserAddress(token) {
+  const headers = createHeader(token)
+  const getUserAddress = await axios.get(`${API_URL}/user_address`, headers)
+
+  return getUserAddress
+}
+
+async function getUserCreditCard(token) {
+  const headers = createHeader(token)
+  const getUserCreditCard= await axios.get(`${API_URL}/user_credit_card`, headers)
+
+  return getUserCreditCard
+}
+
 const services = {
   login,
   register,
@@ -60,7 +80,10 @@ const services = {
   changePassword,
   changePersonalData,
   addCreditCard,
-  addAddress
+  addAddress,
+  getProducts,
+  getUserAddress,
+  getUserCreditCard
 }
 
 export default services

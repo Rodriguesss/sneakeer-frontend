@@ -26,6 +26,7 @@ const Title = styled.h1`
 
 const OptionMenu = styled.div`
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 
@@ -48,8 +49,8 @@ const ButtonPosition = styled.div`
 const Select = styled.select`
 	border: 3px solid #e6d5c1;
 	outline: none;
-	min-width: 250px;
-	padding: 15px 20px;
+	width: 250px;
+	padding: 15px 5px;
 	margin-left: 10px;
 	font-size: 17px;
 	color: #000;
@@ -71,11 +72,17 @@ const Select = styled.select`
 	}
 `
 
+const Warning = styled.p`
+	font-size: 17px;
+	text-align: center;
+`
+
 export {
 	Container,
 	Title,
 	OptionMenu,
 	ButtonPosition,
 	Form,
-	Select
+	Select,
+	Warning
 }

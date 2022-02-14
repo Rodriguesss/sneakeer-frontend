@@ -11,6 +11,10 @@ export function AuthProvider({ children }) {
 	const [token, setToken] = useLocalStorage('token', null)
 	const [isLogin, setIsLogin] = useState(true)
   const [modalIsOpen, setIsOpen] = useState(false)
+	const [cartCount, setCount] = useState(0);
+	const [modifier, setModifier] = useState(null)
+	const [size, setSize] = useState(null)
+	const [filters, setFilters] = useState(null)
 
 	useEffect(() => {
 		location.pathname === '/' && navigate('/home')
@@ -47,6 +51,14 @@ export function AuthProvider({ children }) {
 			setIsOpen,
 			openModal,
 			closeModal,
+			cartCount,
+			setCount,
+			modifier,
+			setModifier,
+			size, 
+			setSize,
+			filters,
+			setFilters,
 	 	}}>
 			{children}
 		</AuthContext.Provider>
