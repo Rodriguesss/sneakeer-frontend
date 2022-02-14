@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const StyledHeader = styled.div`
   width: 80vw;
   height: 120px;
-  /* background-color: lightblue; */
 
   display: flex;
   flex-direction: column;
