@@ -34,7 +34,7 @@ async function changePassword(body, token) {
 
 async function changePersonalData(body, token) {
   const headers = createHeader(token)
-  const userPromise = await axios.put(`${API_URL}/personal_data`, body, headers)
+  const userPromise = await axios.put(`${API_URL}/change_personal_data`, body, headers)
 
   return userPromise
 }

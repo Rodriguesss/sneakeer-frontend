@@ -12,7 +12,7 @@ export default function Login() {
 		try {
 			const promise = await services.login(data)
 
-			login(promise.data.token)
+			login(promise.data.token, promise.data.user)
 
 			toast.success('Logado com sucesso!')
 		} catch {
