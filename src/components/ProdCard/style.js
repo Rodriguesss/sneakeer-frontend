@@ -21,6 +21,7 @@ const Card = styled.div`
     width: 26px;
     height: 26px;
     border-radius: 5px;
+    cursor: pointer;
 
     display: none;
     align-items: center;

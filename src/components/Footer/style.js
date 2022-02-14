@@ -47,8 +47,9 @@ const InfoBox = styled.div`
   }
 
   & >p {
+    cursor: pointer;
     font-size: 14px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
     color: #d9d9d9;
   }
 `

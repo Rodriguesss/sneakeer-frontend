@@ -65,7 +65,8 @@ const LoginButton = styled.button`
   cursor: pointer;
 
   color: #fff;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
 `
 
 const Vertical = styled.div`
@@ -146,6 +147,13 @@ const Right = styled.div`
   span {
     font-size: 18px;
     font-weight: 500;
+  }
+
+  span:last-child {
+    cursor: pointer;
+    color: red;
+    margin-left: 20px;
+    margin-right: 10px;
   }
 `
 
