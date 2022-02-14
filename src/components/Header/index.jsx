@@ -37,9 +37,9 @@ export default function Header() {
       </UpperBar>
       <Horizontal />
       <Categories>
-        <StyledLink to='/exemplo1' >Exemplo 01</StyledLink>
-        <StyledLink to='/exemplo2' >Exemplo 02</StyledLink>
-        <StyledLink to='/exemplo3' >Exemplo 03</StyledLink>
+        <StyledLink to='/exemplo1' >Cano Alto</StyledLink>
+        <StyledLink to='/exemplo2' >Esportivo</StyledLink>
+        <StyledLink to='/exemplo3' >Cano Baixo</StyledLink>
       </Categories>
     </StyledHeader>
   )
