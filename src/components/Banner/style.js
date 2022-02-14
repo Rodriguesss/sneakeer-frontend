@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Background = styled.div`
   width: 100vw;
-  height: 600px;
+  height: ${ ({product}) => product ? '300px' : '600px'};
   background-color: lightcoral;
   background-image: url('https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
   background-position: center;
@@ -14,6 +14,7 @@ const Background = styled.div`
 `
 
 const BannerText = styled.div`
+  display: ${ ({product}) => product && 'none'};
   width: 80vw;
 
   & >h2 {
