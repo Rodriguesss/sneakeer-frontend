@@ -11,14 +11,23 @@ export function AuthProvider({ children }) {
 	const [token, setToken] = useLocalStorage('token', null)
 	const [isLogin, setIsLogin] = useState(true)
   const [modalIsOpen, setIsOpen] = useState(false)
-	const [cartCount, setCount] = useState(0);
+	const [highlight, setHighlight] = useState()
+	const [cartCount, setCount] = useState(0)
 	const [modifier, setModifier] = useState(null)
 	const [size, setSize] = useState(null)
 	const [filters, setFilters] = useState(null)
+	const [ productList, setProductList ] = useState();
+	const [cart, setCart] = useLocalStorage('cart', null);
 
 	useEffect(() => {
 		location.pathname === '/' && navigate('/home')
 	}, [])
+
+
+	function addToCart(id) {  
+    const product = productList.find( ({ _id }) => _id === id);
+    setCart(oldArray => [...oldArray, product]);
+  }
 
 	 function openModal() {
     setIsOpen(true);
@@ -41,24 +50,19 @@ export function AuthProvider({ children }) {
 
 	return (
 		<AuthContext.Provider value={{
-			login,
-			logout,
-			token,
-			user,
-			isLogin,
-			setIsLogin,
-			modalIsOpen,
-			setIsOpen,
-			openModal,
-			closeModal,
-			cartCount,
-			setCount,
-			modifier,
-			setModifier,
-			size, 
-			setSize,
-			filters,
-			setFilters,
+			login, logout,
+			token, user,
+			isLogin, setIsLogin,
+			modalIsOpen, setIsOpen,
+			openModal, closeModal,
+			highlight, setHighlight,
+			cartCount, setCount,
+			modifier, setModifier,
+			size, setSize,
+			filters, setFilters,
+			productList, setProductList,
+			cart, setCart,
+			addToCart
 	 	}}>
 			{children}
 		</AuthContext.Provider>

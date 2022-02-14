@@ -4,8 +4,11 @@ import useAuth from '../../hooks/useAuth';
 import services from '../../services/services'
 
 export default function ProductGrid() {
-  const { setSize, modifier, filters, token } = useAuth();
-  const [ productList, setProductList ] = useState();
+  const { 
+    setSize, modifier, filters,
+    token, addToCart, productList,
+    setProductList,
+  } = useAuth();
 
   useEffect(() => {
     handleProducts();
@@ -48,7 +51,7 @@ export default function ProductGrid() {
             <Sizes>
               { mapSizes(product.sizes).map( button => button ) }
             </Sizes>
-            <Buy>Comprar</Buy>
+            <Buy id={product._id} onClick={(event) => addToCart(event.target.id)}>Comprar</Buy>
           </LowerRow>
         </GridCard>
       ))}

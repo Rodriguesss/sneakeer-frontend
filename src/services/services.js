@@ -59,6 +59,12 @@ async function getProducts(body) {
   return getProductsPromise
 }
 
+async function getLimited(limit) {
+  const getProductsPromise = await axios.get(`${API_URL}/products?limit=${limit}`)
+
+  return getProductsPromise
+}
+
 async function getUserAddress(token) {
   const headers = createHeader(token)
   const getUserAddress = await axios.get(`${API_URL}/user_address`, headers)
@@ -82,8 +88,9 @@ const services = {
   addCreditCard,
   addAddress,
   getProducts,
+  getLimited,
   getUserAddress,
-  getUserCreditCard
+  getUserCreditCard,
 }
 
 export default services
