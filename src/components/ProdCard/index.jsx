@@ -1,19 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import services from '../../services/services';
 import { Card } from './style';
 
 export default function ProdCard() {
-  const { highlight, setHighlight, addToCart } = useAuth();
-  const limit = 5;
+  const [highlight, setHighlight] = useState()
+  const { addToCart } = useAuth();
+  const LIMIT = 5;
+
+  useEffect(() => {
+    getHighlights()
+  }, [])
 
   async function getHighlights() {
-    setHighlight(await services.getLimited(limit));
+    let promise = await services.getLimited(LIMIT)
+    setHighlight(promise.data.result);
   }
-
-  useEffect(()=> {
-    getHighlights();
-  }, [])
 
   return (
     <>
