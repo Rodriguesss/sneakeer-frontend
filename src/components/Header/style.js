@@ -28,6 +28,9 @@ const Categories = styled.div`
   width: 100%;
   height: 50%;
 
+  font-size: 20px;
+  font-weight: 600;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -41,7 +44,7 @@ const Logo = styled.img`
 const SearchInput = styled.input`
   all: unset;
 
-  width: 150px;
+  width: 250px;
   height: 30px;
   color: #fff;
 
@@ -83,6 +86,7 @@ const ShoppingCart = styled.div`
   justify-content: center;
   align-items: center;
   align-self: flex-end;
+  cursor: pointer;
   
   & >ion-icon {
     font-size: 26px;

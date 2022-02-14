@@ -1,6 +1,8 @@
 import React from 'react';
 import Banner from '../../components/Banner';
 import Header from '../../components/Header';
+import ProductContainer from '../../components/ProdutcContainer';
+import Footer from '../../components/Footer';
 
 export default function Home() {
 
@@ -8,8 +10,8 @@ export default function Home() {
     <>
       <Header />
       <Banner />
-      {/* <ProductContainer></ProductContainer>
-      <Footer></Footer> */}
+      <ProductContainer />
+      <Footer />
     </>
   )
 }

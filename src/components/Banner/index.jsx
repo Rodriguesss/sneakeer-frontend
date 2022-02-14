@@ -5,7 +5,7 @@ export default function Banner() {
     <Background>
       <Hover>
         <BannerText>
-          <h2>SNEAKEER TEST HEADER TITLE</h2>
+          <h2>SNEAKEER FOOTWEAR</h2>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, facilis?</p>
         </BannerText>
       </Hover>

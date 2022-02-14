@@ -5,6 +5,7 @@ const Background = styled.div`
   height: 600px;
   background-color: lightcoral;
   background-image: url('https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
