@@ -39,36 +39,6 @@ const Input = styled.input`
         border: 3px solid #757575;
         border-radius: 5px;
     }
-
-	${({ button }) => button && `
-	font-size: 17px;
-    font-weight: bold;
-    color: #fff;
-
-    width: 200px;
-
-    margin-top: 80px;
-
-    padding: 10px;
-
-    border: 1px solid #F23030;
-    border-radius: 5px;
-    background-color: #F23030;
-
-		cursor: pointer;
-
-		:hover {
-			background-color: #E23030;
-		}
-	`}
-
-	${({ cvv }) => cvv && `
-	min-width: 100px;
-	width: 100px;` }}
-
-	${({ number }) => number && `
-		min-width: 175px;
-		width: 100%;` }}
 `
 
 export {

@@ -2,6 +2,7 @@ import { toast } from 'react-toastify'
 import { useForm } from "react-hook-form"
 import services from '../../../services/services'
 import { Title, Form, Input } from "../style"
+import useAuth from '../../../hooks/useAuth'
 
 export default function Register() {
 	const { register, handleSubmit } = useForm()
