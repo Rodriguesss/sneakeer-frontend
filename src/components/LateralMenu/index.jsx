@@ -1,5 +1,5 @@
 import { Container, OptionMenu, Title } from "./style"
-import { IoMailOutline, IoPerson, IoLockOpen, IoJournalOutline } from 'react-icons/io5';
+import { IoMailOutline, IoPerson, IoLockOpen, IoHomeOutline, IoCard } from 'react-icons/io5';
 
 export default function LateralMenu() {
 	return (
@@ -22,7 +22,12 @@ export default function LateralMenu() {
 			</OptionMenu>
 
 			<OptionMenu>
-				<IoJournalOutline size={25} />
+				<IoHomeOutline size={25} />
+				ADICIONAR ENDEREÇO
+			</OptionMenu>
+
+			<OptionMenu>
+				<IoCard size={25} />
 				ADICIONAR CARTÃO DE CRÉDITO
 			</OptionMenu>
 		</Container>

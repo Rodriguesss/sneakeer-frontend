@@ -2,10 +2,11 @@ import CardMenuPersonalData from "../../components/CardMenu/PersonalData";
 import CardMenuEmail from "../../components/CardMenu/Email";
 import CardMenuPassword from "../../components/CardMenu/Password";
 import CardMenuOption from "../../components/CardMenuOption";
+import CardMenuCreditCard from "../../components/CardMenu/CreditCard";
 import LateralMenu from "../../components/LateralMenu";
 import { Container, MenuRight } from "./style";
 import { useRef } from "react";
-import CardMenuCreditCard from "../../components/CardMenu/CreditCard";
+import CardMenuAddress from "../../components/CardMenu/Address";
 
 export default function AccountManagement() {
 	const inputEl = useRef(null)
@@ -31,6 +32,12 @@ export default function AccountManagement() {
 					title='Mudar senha'
 					text='A sua senha não deve ser compartilhada com ninguem.'>
 					<CardMenuPassword />
+				</CardMenuOption>
+
+				<CardMenuOption
+					title='Adicionar Endereço'
+					text='Salve seus endereços para agilizar suas compras.'>
+					<CardMenuAddress />
 				</CardMenuOption>
 
 				<CardMenuOption

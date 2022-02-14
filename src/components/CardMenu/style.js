@@ -55,6 +55,10 @@ const Input = styled.input`
 	${({ cvv }) => cvv && `
 	min-width: 100px;
 	width: 100px;` }}
+
+	${({ number }) => number && `
+		min-width: 175px;
+		width: 100%;` }}
 `
 
 const CreditCardContainerCvvInput = styled.div`
