@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import Modal from "react-modal"
 
 const TitleHeader = styled.div`
 	display: flex;
@@ -32,9 +33,11 @@ const LinkToogle = styled.b`
 	}
 `
 
+
+
 export {
 	TitleHeader,
 	Link,
 	Button,
-	LinkToogle
+	LinkToogle,
 }

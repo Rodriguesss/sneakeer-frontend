@@ -34,6 +34,7 @@ export default function ProductGrid() {
     },
   ]
 
+
   function mapSizes(arr){
     const newArr = [];
 
