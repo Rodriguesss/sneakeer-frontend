@@ -2,6 +2,8 @@ import { Grid, GridCard, Info, UpperRow, LowerRow } from '../ProductGrid/style'
 import { Button } from './style'
 import Quantity from '../Quantity'
 import useAuth from '../../hooks/useAuth'
+import Price from '../Price'
+import { useState } from 'react'
 
 function multiply(price) {
 	return parseFloat(price.replace(",", "."))
@@ -9,6 +11,7 @@ function multiply(price) {
 
 export function CartGrid({ setTotal }) {
 	const { cart, removeToCart } = useAuth()
+	const [quantity, setQuantity] = useState(1)
 
 	function handleTotal() {
 		let total = 0
@@ -34,11 +37,11 @@ export function CartGrid({ setTotal }) {
 						<img src={img} />
 						<Info >
 							<p>{name}</p>
-							<span>R$ {price}</span>
+							<Price quantity={quantity}>R$ {multiply(price)}</Price>
 						</Info>
 					</UpperRow>
 					<LowerRow>
-						<Quantity />
+						<Quantity setQuantity={setQuantity} />
 						<Button id={_id} onClick={(e) => handleRemoveCart(e)}>Remover</Button>
 					</LowerRow>
 				</GridCard>

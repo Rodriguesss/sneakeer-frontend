@@ -1,16 +1,21 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 import useAuth from '../../hooks/useAuth'
 import services from "../../services/services";
+
 import { Input } from "../CardMenu/style";
 import { Container, OptionMenu, Title, ButtonPosition, Form, Select, Warning } from "./style";
 
 export default function CreditCardMenu({ total }) {
-	const { token, cart } = useAuth()
+	const { token, cart, setCart } = useAuth()
 	const [address, setAddress] = useState()
 	const [creditCard, setCreditCard] = useState()
+	const { register, handleSubmit } = useForm()
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		handleUserAddress()
@@ -27,30 +32,40 @@ export default function CreditCardMenu({ total }) {
 		setCreditCard(promise.data.result)
 	}
 
-	const { register, handleSubmit } = useForm()
-
 	async function handleChangeCreditCard(data) {
-		console.log('ola')
 		try {
-			//await services.addCreditCard(data, token)
-			console.log(data)
+			data.address_id === '' || data.credit_card_id === ''
+				? toast.error('Preenche todos os dados.')
+				: handleOrder(data)
 
-			toast.success('Cartão de crédito adicionado com sucesso!')
 		} catch {
 			toast.error('Cartão de crédito inválido.')
 		}
 	}
 
+	async function handleOrder(data) {
+		let sneakers = []
+
+		cart.forEach(({ _id }) => { sneakers.push({ _id }) })
+		
+		/*await services.addCreditCard({...data, sneakers}, token)*/
+		setCart([])
+
+		navigate('/home')
+
+		toast.success('Compra efetuada com sucesso!')
+	}
+
 	return (
 		<Container>
-			<Form onSubmit={handleSubmit((data) => handleChangeCreditCard(data))}>
-				<Title>CARRINHO DE COMPRA</Title>
+			<Title>CARRINHO DE COMPRA</Title>
 
-				{cart.length === 0
-					? (<>
-						<Warning>Carrinho esta vázio</Warning>
-					</>)
-					: (<>
+			{cart.length === 0
+				? (<>
+					<Warning>Carrinho esta vázio</Warning>
+				</>)
+				: (<>
+					<Form onSubmit={handleSubmit((data) => handleChangeCreditCard(data))}>
 						<OptionMenu>
 							SELECIONAR ENDEREÇO:
 							<Select {...register("address_id")}>
@@ -77,8 +92,8 @@ export default function CreditCardMenu({ total }) {
 
 						<ButtonPosition>
 							<Input type="submit" value="FINALIZAR COMPRA" button={true} />
-						</ButtonPosition></>)}
-			</Form>
+						</ButtonPosition>
+					</Form></>)}
 		</Container>
 	)
 }
