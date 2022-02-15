@@ -53,7 +53,7 @@ export default function CreditCardMenu({ total }) {
 
 		cart.forEach(({ _id }) => { sneakers.push({ _id }) })
 
-		await services.addOrder({ ...data, sneakers, date }, token)
+		await services.addOrder({ ...data, sneakers, date, total }, token)
 
 		await services.sendEmail({ email }, token)
 		setCart([])
