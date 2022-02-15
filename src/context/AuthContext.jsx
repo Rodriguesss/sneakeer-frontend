@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { createContext, useEffect, useState } from "react"
 import useLocalStorage from '../hooks/useLocalStorage';
+import services from '../services/services'
 
 export const AuthContext = createContext()
 
@@ -16,17 +17,31 @@ export function AuthProvider({ children }) {
 	const [modifier, setModifier] = useState(null)
 	const [size, setSize] = useState(null)
 	const [filters, setFilters] = useState(null)
-	const [ productList, setProductList ] = useState();
+	const [productList, setProductList] = useState(null);
 	const [cart, setCart] = useLocalStorage('cart', null);
 
 	useEffect(() => {
 		location.pathname === '/' && navigate('/home')
+		handleProducts();
 	}, [])
 
+  async function handleProducts() {
+    // if( modifier ) {
+    //   const { data } = await services.getProducts(modifier, token);
+    //   setProductList(data.result);
+    // } else {
+    //   const { data } = await services.getProducts(filters, token)
+    //   setProductList(data.result);
+    // }
+		const { data } = await services.getProducts({})
+    setProductList(JSON.parse(JSON.stringify(data.result)));
+  }
 
 	function addToCart(id) {  
     const product = productList.find( ({ _id }) => _id === id);
-    setCart(oldArray => [...oldArray, product]);
+		cart
+			? setCart([...cart, product])
+			: setCart([product])
   }
 
 	 function openModal() {
@@ -62,7 +77,7 @@ export function AuthProvider({ children }) {
 			filters, setFilters,
 			productList, setProductList,
 			cart, setCart,
-			addToCart
+			handleProducts,	addToCart
 	 	}}>
 			{children}
 		</AuthContext.Provider>

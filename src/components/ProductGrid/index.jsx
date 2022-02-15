@@ -1,26 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Grid, GridCard, Info, UpperRow, LowerRow, Buy, Sizes } from './style'
 import useAuth from '../../hooks/useAuth';
-import services from '../../services/services'
 
 export default function ProductGrid() {
   const { 
-    setSize, modifier, filters,
-    token, addToCart, productList,
-    setProductList,
+    setSize, addToCart, productList, handleProducts
   } = useAuth();
 
-  useEffect(() => {
-    handleProducts();
-  },[])
-
-  async function handleProducts() {
-    if( modifier ) {
-      setProductList(await services.getProducts(modifier, token));
-    } else {
-      setProductList(await services.getProducts(filters, token));
-    }
-  }
+  useEffect(()=> {
+    handleProducts()
+  }, []);
 
   function mapSizes(arr){
     const newArr = [];
@@ -38,7 +27,7 @@ export default function ProductGrid() {
 
   return(
     <Grid>
-      {productList?.data?.result.map( product => (
+      {productList?.map( product => (
         <GridCard>
           <UpperRow>
             <img src={product.img} />
