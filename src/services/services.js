@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://6b05-191-55-80-105.ngrok.io'
+const API_URL = 'http://localhost:3000'
 
 function createHeader(token) {
   return { headers: { Authorization: `Bearer ${token}` } }
@@ -79,6 +79,20 @@ async function getUserCreditCard(token) {
   return getUserCreditCard
 }
 
+async function addOrder(body, token) {
+  const headers = createHeader(token)
+  const postOrder = await axios.post(`${API_URL}/order`, body, headers)
+
+  return postOrder 
+}
+
+async function sendEmail(body, token) {
+  const headers = createHeader(token)
+  const sendEmail = await axios.post(`${API_URL}/send_email`, body, headers)
+
+  return sendEmail
+}
+
 const services = {
   login,
   register,
@@ -91,6 +105,8 @@ const services = {
   getLimited,
   getUserAddress,
   getUserCreditCard,
+  addOrder,
+  sendEmail
 }
 
 export default services

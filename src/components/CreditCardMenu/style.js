@@ -35,7 +35,7 @@ const OptionMenu = styled.div`
 	line-height: 20px;
 `
 
-const Form = styled.div`
+const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
