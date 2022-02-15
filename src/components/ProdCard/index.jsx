@@ -20,7 +20,7 @@ export default function ProdCard() {
     <>
       {highlight?.map( sneaker => (
         <Card>
-          <div className='cart' id={sneaker._id} onClick={(e) => addToCart(e.target.id) }>
+          <div className='cart' id={sneaker._id} onClick={(e) => addToCart(e.currentTarget.id)} >
             <ion-icon name="cart-outline"></ion-icon>
           </div>
           <img src={sneaker.img} alt="tenis exemplo"/>
