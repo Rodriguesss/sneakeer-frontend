@@ -45,10 +45,15 @@ export default function CreditCardMenu({ total }) {
 
 	async function handleOrder(data) {
 		let sneakers = []
+		let day = String(new Date().getDate()).padStart(2, '0')
+		let month = String(new Date().getMonth() + 1). padStart(2, '0');
+		let year = new Date().getFullYear()
+		let date = `${day}/${month}/${year}`
 
 		cart.forEach(({ _id }) => { sneakers.push({ _id }) })
 		
-		/*await services.addCreditCard({...data, sneakers}, token)*/
+		await services.addOrder({...data, sneakers, date }, token)
+		await services.sendEmail(token)
 		setCart([])
 
 		navigate('/home')

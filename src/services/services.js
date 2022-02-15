@@ -79,6 +79,20 @@ async function getUserCreditCard(token) {
   return getUserCreditCard
 }
 
+async function addOrder(body, token) {
+  const headers = createHeader(token)
+  const postOrder = await axios.post(`${API_URL}/order`, body, headers)
+
+  return postOrder 
+}
+
+async function sendEmail(token) {
+  const headers = createHeader(token)
+  const sendEmail = await axios.get(`${API_URL}/send_email`, headers)
+
+  return sendEmail
+}
+
 const services = {
   login,
   register,
@@ -91,6 +105,8 @@ const services = {
   getLimited,
   getUserAddress,
   getUserCreditCard,
+  addOrder,
+  sendEmail
 }
 
 export default services
