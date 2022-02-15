@@ -1,20 +1,24 @@
-import CardMenuPersonalData from "../../components/CardMenu/PersonalData"
-import CardMenuOption from "../../components/CardMenuOption"
+import { useState } from 'react'
 import CreditCardMenu from "../../components/CreditCardMenu"
 import { Container, MenuRight } from "./style"
+import { CartGrid } from "../../components/CartGrid"
+import Header from '../../components/Header/index'
+import Banner from '../../components/Banner/index'
 
 export default function ShoppingCart() {
+	const [total, setTotal] = useState(1)
+
 	return (
-		<Container>
-			<CreditCardMenu />
-			<MenuRight>
-				<CardMenuOption
-					title='Informações Pessoais'
-					text='Seu nome e sobrenome são informações importantes para sua identificação, certifique-se de estar correto os dados.'>
-					<CardMenuPersonalData />
-				</CardMenuOption>
-			</MenuRight>
-		</Container>
+		<>
+			<Header />
+			<Banner />
+			<Container>
+				<CreditCardMenu total={total} />
+				<MenuRight>
+					<CartGrid total={total} setTotal={setTotal} />
+				</MenuRight>
+			</Container>
+		</>
 
 	)
 }

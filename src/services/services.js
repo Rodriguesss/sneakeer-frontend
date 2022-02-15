@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://6b05-191-55-80-105.ngrok.io'
+const API_URL = 'http://localhost:3000'
 
 function createHeader(token) {
   return { headers: { Authorization: `Bearer ${token}` } }

@@ -31,7 +31,7 @@ const Input = styled.input`
 	-webkit-appearance:none;
 
     ::placeholder {
-			font-size: 17px;
+		font-size: 17px;
       font-weight: bold;
     }
 

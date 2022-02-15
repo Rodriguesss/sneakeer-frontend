@@ -1,13 +1,14 @@
 
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import useAuth from '../../hooks/useAuth'
 import services from "../../services/services";
 import { Input } from "../CardMenu/style";
 import { Container, OptionMenu, Title, ButtonPosition, Form, Select, Warning } from "./style";
 
-export default function CreditCardMenu() {
-	const { token, cartCount } = useAuth()
+export default function CreditCardMenu({ total }) {
+	const { token, cart } = useAuth()
 	const [address, setAddress] = useState()
 	const [creditCard, setCreditCard] = useState()
 
@@ -29,8 +30,10 @@ export default function CreditCardMenu() {
 	const { register, handleSubmit } = useForm()
 
 	async function handleChangeCreditCard(data) {
+		console.log('ola')
 		try {
-			await services.addCreditCard(data, token)
+			//await services.addCreditCard(data, token)
+			console.log(data)
 
 			toast.success('Cartão de crédito adicionado com sucesso!')
 		} catch {
@@ -43,7 +46,7 @@ export default function CreditCardMenu() {
 			<Form onSubmit={handleSubmit((data) => handleChangeCreditCard(data))}>
 				<Title>CARRINHO DE COMPRA</Title>
 
-				{cartCount !== 0
+				{cart.length === 0
 					? (<>
 						<Warning>Carrinho esta vázio</Warning>
 					</>)
@@ -51,8 +54,8 @@ export default function CreditCardMenu() {
 						<OptionMenu>
 							SELECIONAR ENDEREÇO:
 							<Select {...register("address_id")}>
-							<option value="">Selecione...</option>
-								{address?.map(({_id, street, number}, index) => (
+								<option value="">Selecione...</option>
+								{address?.map(({ _id, street, number }, index) => (
 									<option value={_id} key={index}>{`${street} - n:${number}`}</option>
 								))}
 							</Select>
@@ -61,11 +64,15 @@ export default function CreditCardMenu() {
 						<OptionMenu>
 							SELECIONAR CARTÃO:
 							<Select {...register("credit_card_id")}>
-							<option value="">Selecione...</option>
-								{creditCard?.map(({_id, name}, index) => (
+								<option value="">Selecione...</option>
+								{creditCard?.map(({ _id, name }, index) => (
 									<option value={_id} key={index}>{`${name}`}</option>
 								))}
 							</Select>
+						</OptionMenu>
+
+						<OptionMenu>
+							TOTAL: {total}
 						</OptionMenu>
 
 						<ButtonPosition>
