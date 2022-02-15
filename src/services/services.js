@@ -86,9 +86,9 @@ async function addOrder(body, token) {
   return postOrder 
 }
 
-async function sendEmail(token) {
+async function sendEmail(body, token) {
   const headers = createHeader(token)
-  const sendEmail = await axios.get(`${API_URL}/send_email`, headers)
+  const sendEmail = await axios.post(`${API_URL}/send_email`, body, headers)
 
   return sendEmail
 }
