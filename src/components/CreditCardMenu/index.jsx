@@ -67,40 +67,42 @@ export default function CreditCardMenu({ total }) {
 		<Container>
 			<Title>CARRINHO DE COMPRA</Title>
 
-			{cart.length === 0
-				? (<>
-					<Warning>Carrinho esta vázio</Warning>
-				</>)
-				: (<>
-					<Form onSubmit={handleSubmit((data) => handleChangeCreditCard(data))}>
-						<OptionMenu>
-							SELECIONAR ENDEREÇO:
-							<Select {...register("address_id")}>
-								<option value="">Selecione...</option>
-								{address?.map(({ _id, street, number }, index) => (
-									<option value={_id} key={index}>{`${street} - n:${number}`}</option>
-								))}
-							</Select>
-						</OptionMenu>
+			{cart === null
+				? <Warning>Carrinho esta vázio</Warning>
+				: cart.length === 0
+					? (<>
+						<Warning>Carrinho esta vázio</Warning>
+					</>)
+					: (<>
+						<Form onSubmit={handleSubmit((data) => handleChangeCreditCard(data))}>
+							<OptionMenu>
+								SELECIONAR ENDEREÇO:
+								<Select {...register("address_id")}>
+									<option value="">Selecione...</option>
+									{address?.map(({ _id, street, number }, index) => (
+										<option value={_id} key={index}>{`${street} - n:${number}`}</option>
+									))}
+								</Select>
+							</OptionMenu>
 
-						<OptionMenu>
-							SELECIONAR CARTÃO:
-							<Select {...register("credit_card_id")}>
-								<option value="">Selecione...</option>
-								{creditCard?.map(({ _id, name }, index) => (
-									<option value={_id} key={index}>{`${name}`}</option>
-								))}
-							</Select>
-						</OptionMenu>
+							<OptionMenu>
+								SELECIONAR CARTÃO:
+								<Select {...register("credit_card_id")}>
+									<option value="">Selecione...</option>
+									{creditCard?.map(({ _id, name }, index) => (
+										<option value={_id} key={index}>{`${name}`}</option>
+									))}
+								</Select>
+							</OptionMenu>
 
-						<OptionMenu>
-							TOTAL: {total}
-						</OptionMenu>
+							<OptionMenu>
+								TOTAL: {total}
+							</OptionMenu>
 
-						<ButtonPosition>
-							<Input type="submit" value="FINALIZAR COMPRA" button={true} />
-						</ButtonPosition>
-					</Form></>)}
+							<ButtonPosition>
+								<Input type="submit" value="FINALIZAR COMPRA" button={true} />
+							</ButtonPosition>
+						</Form></>)}
 		</Container>
 	)
 }

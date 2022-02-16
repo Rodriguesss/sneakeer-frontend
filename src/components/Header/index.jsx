@@ -36,7 +36,7 @@ export default function Header() {
             <Link to="/shopping_cart">
               <ion-icon name="cart-outline"></ion-icon>
             </Link>
-            <CartCount>{cart.length}</CartCount>
+            <CartCount>{cart === null ? 0 : cart.length}</CartCount>
           </ShoppingCart>
         </Right>
       </UpperBar>
