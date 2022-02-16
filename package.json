@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "NODE_ENV=development vite",
-    "prod": "NODE_ENV=production vite",
+    "start": "NODE_ENV=production vite",
     "build": "NODE_ENV=production vite build",
     "preview": "vite preview"
   },
